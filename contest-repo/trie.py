@@ -10,10 +10,12 @@ class Trie:
         self.children = defaultdict(Trie)
 
     # Insert an item into a Trie.
+    # exact=True: Return [] unless the exact match is found
+    # exact=False: Return the longest match with the key
+    #
     # Key is used to determine where the item is placed, usually key == item
     # Since item is stored in every single Trie node, you can save space by
     # making key and item different. For instance, if you have a list of words
-    #
     # to insert, key can be the word and item can be the index it occurs in
     # the original list. This way you can look up the word without incurring
     # the cost of storing it.
@@ -29,16 +31,13 @@ class Trie:
             return self
 
     # Look for a previously stored key and return its items.
-    #
-    # exact=True: Return [] unless the exact match is found
-    # exact=False: Return the longest match with the key
-    def find(self, query):
-        if len(query) == 0:
+    def find(self, key):
+        if len(key) == 0:
             return self.items
         else:
-            initial = query[0]
+            initial = key[0]
             if initial in self.children:
-                return self.children[initial].find(query[1:])
+                return self.children[initial].find(key[1:])
             else:
                 return self.items
 
