@@ -1,5 +1,5 @@
 '''
-Solution for LeetCode problem 76
+Solution for LeetCode problem 76: Minimum Window Substring
 Author: alex.does.leetcode@gmail.com
 Last updated: 10 Feb 2024
 
