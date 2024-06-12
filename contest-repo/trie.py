@@ -3,11 +3,17 @@ Trie implementation.
 
 See https://leetcode.com/problems/longest-common-suffix-queries/ for example usage
 '''
+from collections import defaultdict
 
 class Trie:
-    def __init__(self):
+    # Items is a list of things to initialize into the Trie
+    # Equivalent to insert each item into a fresh Trie
+    def __init__(self, keys = None):
         self.items = []
         self.children = defaultdict(Trie)
+        if keys:
+            for key in keys:
+                self.insert(key)
 
     # Insert an item into a Trie.
     # exact=True: Return [] unless the exact match is found
